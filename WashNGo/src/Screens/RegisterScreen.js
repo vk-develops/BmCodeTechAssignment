@@ -1,12 +1,4 @@
-import {
-    Dimensions,
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    View,
-} from "react-native";
+import { ScrollView, Text, TextInput, View } from "react-native";
 import React from "react";
 import Feather from "@expo/vector-icons/Feather";
 import CtaButton from "../Components/CtaButton";
@@ -187,5 +179,3 @@ const RegisterScreen = ({ navigation }) => {
 };
 
 export default RegisterScreen;
-
-const styles = StyleSheet.create({});

@@ -23,7 +23,11 @@ const AdditionalText = ({ navigation, to, title, toTitle }) => {
             >
                 {title}
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => {
+                    navigation.navigate(`${to}`);
+                }}
+            >
                 <Text
                     style={{
                         fontSize: 16,
