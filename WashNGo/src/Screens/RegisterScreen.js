@@ -9,32 +9,15 @@ import {
 } from "react-native";
 import React from "react";
 import Feather from "@expo/vector-icons/Feather";
-import Logo from "../../assets/Images/Logo.png";
 import CtaButton from "../Components/CtaButton";
-
-const width = Dimensions.get("window").width;
+import AdditionalText from "../Components/AdditionalText";
+import ImgComponent from "../Components/ImgComponent";
 
 const RegisterScreen = ({ navigation }) => {
     return (
         <ScrollView style={{ flex: 1, backgroundColor: "#fff" }}>
-            <View
-                style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                }}
-            >
-                <Image
-                    source={Logo}
-                    style={{
-                        height: width - 100,
-                        width: width - 100,
-                        resizeMode: "contain",
-                    }}
-                />
-            </View>
-
-            <View style={{ padding: 20 }}>
+            <ImgComponent />
+            <View style={{ paddingHorizontal: 20 }}>
                 <Text
                     style={{
                         fontFamily: "jakartaBold",
@@ -180,6 +163,24 @@ const RegisterScreen = ({ navigation }) => {
                     to={"OnboardingScreen"}
                     title="Sign Up"
                 />
+                <AdditionalText
+                    navigation={navigation}
+                    to={"LoginScreen"}
+                    title={"Already have an account?"}
+                    toTitle={"Sign In"}
+                />
+                <Text
+                    style={{
+                        fontFamily: "jakartaMedium",
+                        fontSize: 15,
+                        color: "#808080",
+                        paddingVertical: 12,
+                        textAlign: "center",
+                    }}
+                >
+                    By login or sign up, you agree to our terms of use and
+                    privacy policy
+                </Text>
             </View>
         </ScrollView>
     );
