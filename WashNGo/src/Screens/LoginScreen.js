@@ -6,16 +6,45 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Feather from "@expo/vector-icons/Feather";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import CtaButton from "../Components/CtaButton";
 import AdditionalText from "../Components/AdditionalText";
 import ImgComponent from "../Components/ImgComponent";
 import Mediumblob from "../../assets/Images/Mediumblob.png";
 
 const LoginScreen = ({ navigation }) => {
+    const [phone, setPhone] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleLoginSubmit = async () => {
+        try {
+            const userReq = { phone, password };
+
+            const response = await fetch(
+                "https://tor.appdevelopers.mobi/api/login",
+                {
+                    method: "POST",
+                    credentials: "include",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(userReq),
+                }
+            );
+
+            const data = await response.json();
+            console.log(data);
+
+            if (response.ok) {
+                navigation.replace("HomeScreen", data);
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+
     return (
         <ScrollView
             style={{ flex: 1, backgroundColor: "#fff", position: "relative" }}
@@ -69,7 +98,7 @@ const LoginScreen = ({ navigation }) => {
                             fontSize: 16,
                         }}
                     >
-                        Email
+                        Phone
                     </Text>
                     <View
                         style={{
@@ -86,7 +115,7 @@ const LoginScreen = ({ navigation }) => {
                         }}
                     >
                         <Feather
-                            name="mail"
+                            name="phone"
                             size={24}
                             color="#808080"
                         />
@@ -96,7 +125,10 @@ const LoginScreen = ({ navigation }) => {
                                 fontSize: 16,
                                 width: "90%",
                             }}
-                            placeholder="xyz@gmail.com"
+                            placeholder="9654871230"
+                            value={phone}
+                            onChangeText={(text) => setPhone(text)}
+                            keyboardType="name-phone-pad"
                         />
                     </View>
                 </View>
@@ -137,14 +169,37 @@ const LoginScreen = ({ navigation }) => {
                                 width: "90%",
                             }}
                             placeholder="Password"
+                            value={password}
+                            onChangeText={(text) => setPassword(text)}
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            secureTextEntry={true}
                         />
                     </View>
                 </View>
-                <CtaButton
-                    navigation={navigation}
-                    to={"OnboardingScreen"}
-                    title="Sign In"
-                />
+
+                <TouchableOpacity
+                    onPress={handleLoginSubmit}
+                    style={{
+                        width: "100%",
+                        backgroundColor: "#A3CFFF",
+                        borderRadius: 100,
+                        marginBottom: 25,
+                        borderColor: "#94C7FF",
+                        borderWidth: 2,
+                    }}
+                >
+                    <Text
+                        style={{
+                            fontSize: 20,
+                            fontFamily: "jakartaSemiBold",
+                            textAlign: "center",
+                            paddingVertical: 12,
+                        }}
+                    >
+                        Sign In
+                    </Text>
+                </TouchableOpacity>
 
                 <View style={{ paddingHorizontal: 20 }}>
                     <View

@@ -2,6 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
+import Toast from "react-native-toast-message";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Appstack from "./src/Navigation/Appstack";
 
@@ -22,6 +23,7 @@ export default function App() {
             <StatusBar style="auto" />
             <NavigationContainer>
                 <Appstack />
+                <Toast />
             </NavigationContainer>
         </SafeAreaView>
     );

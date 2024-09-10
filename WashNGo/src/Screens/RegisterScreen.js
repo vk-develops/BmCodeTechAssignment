@@ -1,12 +1,49 @@
-import { Image, ScrollView, Text, TextInput, View } from "react-native";
-import React from "react";
+import {
+    Image,
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from "react-native";
+import React, { useState } from "react";
 import Feather from "@expo/vector-icons/Feather";
-import CtaButton from "../Components/CtaButton";
 import AdditionalText from "../Components/AdditionalText";
 import ImgComponent from "../Components/ImgComponent";
 import Mediumblob from "../../assets/Images/Mediumblob.png";
 
 const RegisterScreen = ({ navigation }) => {
+    const [name, setName] = useState("");
+    const [phone, setPhone] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleRegisterSubmit = async () => {
+        try {
+            const userReq = { name, phone, password };
+
+            const response = await fetch(
+                "https://tor.appdevelopers.mobi/api/register",
+                {
+                    method: "POST",
+                    credentials: "include",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(userReq),
+                }
+            );
+
+            const data = await response.json();
+            console.log(data);
+
+            if (response.ok) {
+                navigation.replace("HomeScreen", data);
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+
     return (
         <ScrollView
             style={{ flex: 1, backgroundColor: "#fff", position: "relative" }}
@@ -38,7 +75,7 @@ const RegisterScreen = ({ navigation }) => {
                         color: "#1e1e1e",
                     }}
                 >
-                    Sign In
+                    Sign Up
                 </Text>
                 <Text
                     style={{
@@ -88,6 +125,8 @@ const RegisterScreen = ({ navigation }) => {
                                 width: "90%",
                             }}
                             placeholder="Enter your name"
+                            value={name}
+                            onChangeText={(text) => setName(text)}
                         />
                     </View>
                 </View>
@@ -100,7 +139,7 @@ const RegisterScreen = ({ navigation }) => {
                             fontSize: 16,
                         }}
                     >
-                        Email
+                        Phone
                     </Text>
                     <View
                         style={{
@@ -117,7 +156,7 @@ const RegisterScreen = ({ navigation }) => {
                         }}
                     >
                         <Feather
-                            name="mail"
+                            name="phone"
                             size={24}
                             color="#808080"
                         />
@@ -127,7 +166,10 @@ const RegisterScreen = ({ navigation }) => {
                                 fontSize: 16,
                                 width: "90%",
                             }}
-                            placeholder="xyz@gmail.com"
+                            placeholder="9654871230"
+                            value={phone}
+                            onChangeText={(text) => setPhone(text)}
+                            keyboardType="name-phone-pad"
                         />
                     </View>
                 </View>
@@ -168,14 +210,36 @@ const RegisterScreen = ({ navigation }) => {
                                 width: "90%",
                             }}
                             placeholder="Password"
+                            value={password}
+                            onChangeText={(text) => setPassword(text)}
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            secureTextEntry={true}
                         />
                     </View>
                 </View>
-                <CtaButton
-                    navigation={navigation}
-                    to={"OnboardingScreen"}
-                    title="Sign Up"
-                />
+                <TouchableOpacity
+                    onPress={handleRegisterSubmit}
+                    style={{
+                        width: "100%",
+                        backgroundColor: "#A3CFFF",
+                        borderRadius: 100,
+                        marginBottom: 25,
+                        borderColor: "#94C7FF",
+                        borderWidth: 2,
+                    }}
+                >
+                    <Text
+                        style={{
+                            fontSize: 20,
+                            fontFamily: "jakartaSemiBold",
+                            textAlign: "center",
+                            paddingVertical: 12,
+                        }}
+                    >
+                        Sign Up
+                    </Text>
+                </TouchableOpacity>
                 <AdditionalText
                     navigation={navigation}
                     to={"LoginScreen"}
