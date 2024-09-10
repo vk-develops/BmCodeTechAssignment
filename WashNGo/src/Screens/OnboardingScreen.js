@@ -10,6 +10,7 @@ import React from "react";
 import Logo from "../../assets/Images/Logo.png";
 import MediumBlob from "../../assets/Images/Mediumblob.png";
 import CtaButton from "../Components/CtaButton";
+import AdditionalText from "../Components/AdditionalText";
 
 const width = Dimensions.get("window").width;
 
@@ -75,41 +76,12 @@ const OnboardingScreen = ({ navigation }) => {
                     to={"RegisterScreen"}
                     title={"Let's Start"}
                 />
-                <View
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        flexDirection: "row",
-                        gap: 3,
-                    }}
-                >
-                    <Text
-                        style={{
-                            fontSize: 16,
-                            fontWeight: "black",
-                            textAlign: "center",
-                            fontFamily: "jakartaMedium",
-                            color: "#555",
-                        }}
-                    >
-                        Already have an account?
-                    </Text>
-                    <TouchableOpacity>
-                        <Text
-                            style={{
-                                fontSize: 16,
-                                fontWeight: "black",
-                                textAlign: "center",
-                                fontFamily: "jakartaSemiBold",
-                                color: "#222",
-                                paddingBottom: -2,
-                            }}
-                        >
-                            Sign In
-                        </Text>
-                    </TouchableOpacity>
-                </View>
+                <AdditionalText
+                    navigation={navigation}
+                    to={"LoginScreen"}
+                    title={"Already have an account?"}
+                    toTitle={"Sign In"}
+                />
             </View>
         </View>
     );

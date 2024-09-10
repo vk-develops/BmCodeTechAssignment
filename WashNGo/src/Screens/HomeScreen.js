@@ -19,27 +19,29 @@ const HomeScreen = ({ navigation, route }) => {
         >
             <ImgComponent />
 
-            <View>
-                <Text
-                    style={{
-                        fontFamily: "jakartaBold",
-                        fontSize: 24,
-                        textAlign: "center",
-                    }}
-                >
-                    Welcome, {data.data.name}
-                </Text>
-                <Text
-                    style={{
-                        fontFamily: "jakartaMedium",
-                        fontSize: 18,
-                        textAlign: "center",
-                        paddingTop: 4,
-                    }}
-                >
-                    Phone, {data.data.phone}
-                </Text>
-            </View>
+            {data && (
+                <View>
+                    <Text
+                        style={{
+                            fontFamily: "jakartaBold",
+                            fontSize: 24,
+                            textAlign: "center",
+                        }}
+                    >
+                        Welcome, {data.data.name}
+                    </Text>
+                    <Text
+                        style={{
+                            fontFamily: "jakartaMedium",
+                            fontSize: 18,
+                            textAlign: "center",
+                            paddingTop: 4,
+                        }}
+                    >
+                        Phone, {data.data.phone}
+                    </Text>
+                </View>
+            )}
 
             <TouchableOpacity
                 onPress={() => {

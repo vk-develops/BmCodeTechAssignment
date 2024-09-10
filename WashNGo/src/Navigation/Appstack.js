@@ -1,5 +1,8 @@
 import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+    createStackNavigator,
+    CardStyleInterpolators,
+} from "@react-navigation/stack";
 import OnboardingScreen from "../Screens/OnboardingScreen";
 import LoginScreen from "../Screens/LoginScreen";
 import RegisterScreen from "../Screens/RegisterScreen";
@@ -9,7 +12,14 @@ const Stack = createStackNavigator();
 
 const Appstack = () => {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator
+            screenOptions={{
+                gestureEnabled: true,
+                gestureDirection: "horizontal",
+                cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+                headerShown: false,
+            }}
+        >
             <Stack.Screen
                 name="OnboardingScreen"
                 component={OnboardingScreen}

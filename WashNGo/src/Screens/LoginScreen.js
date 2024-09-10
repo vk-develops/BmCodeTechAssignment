@@ -75,7 +75,7 @@ const LoginScreen = ({ navigation }) => {
                         color: "#1e1e1e",
                     }}
                 >
-                    Sign Up
+                    Sign In
                 </Text>
                 <Text
                     style={{
