@@ -9,10 +9,11 @@ import {
 import React from "react";
 import Logo from "../../assets/Images/Logo.png";
 import MediumBlob from "../../assets/Images/Mediumblob.png";
+import CtaButton from "../Components/CtaButton";
 
 const width = Dimensions.get("window").width;
 
-const OnboardingScreen = () => {
+const OnboardingScreen = ({ navigation }) => {
     return (
         <View
             style={{
@@ -64,32 +65,16 @@ const OnboardingScreen = () => {
                         textAlign: "center",
                         marginBottom: 50,
                         fontFamily: "jakartaSemiBold",
-                        color: "#1e1e1e",
+                        color: "#808080",
                     }}
                 >
                     Sparkle & Shine Transform Your Drive with Every Wash!
                 </Text>
-                <TouchableOpacity
-                    style={{
-                        width: "100%",
-                        backgroundColor: "#A3CFFF",
-                        borderRadius: 100,
-                        marginBottom: 25,
-                        borderColor: "#94C7FF",
-                        borderWidth: 2,
-                    }}
-                >
-                    <Text
-                        style={{
-                            fontSize: 20,
-                            fontFamily: "jakartaSemiBold",
-                            textAlign: "center",
-                            paddingVertical: 12,
-                        }}
-                    >
-                        Let's Start
-                    </Text>
-                </TouchableOpacity>
+                <CtaButton
+                    navigation={navigation}
+                    to={"RegisterScreen"}
+                    title={"Let's Start"}
+                />
                 <View
                     style={{
                         display: "flex",
