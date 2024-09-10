@@ -1,13 +1,34 @@
-import { ScrollView, Text, TextInput, View } from "react-native";
+import { Image, ScrollView, Text, TextInput, View } from "react-native";
 import React from "react";
 import Feather from "@expo/vector-icons/Feather";
 import CtaButton from "../Components/CtaButton";
 import AdditionalText from "../Components/AdditionalText";
 import ImgComponent from "../Components/ImgComponent";
+import Mediumblob from "../../assets/Images/Mediumblob.png";
 
 const RegisterScreen = ({ navigation }) => {
     return (
-        <ScrollView style={{ flex: 1, backgroundColor: "#fff" }}>
+        <ScrollView
+            style={{ flex: 1, backgroundColor: "#fff", position: "relative" }}
+        >
+            <View
+                style={{
+                    position: "absolute",
+                    bottom: -10,
+                    right: -5,
+                    zIndex: -1,
+                }}
+            >
+                <Image
+                    source={Mediumblob}
+                    style={{
+                        height: 150,
+                        width: 150,
+                        transform: [{ rotate: "80deg" }],
+                    }}
+                />
+            </View>
+
             <ImgComponent />
             <View style={{ paddingHorizontal: 20 }}>
                 <Text

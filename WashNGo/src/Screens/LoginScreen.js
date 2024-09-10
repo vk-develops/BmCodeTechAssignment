@@ -55,6 +55,7 @@ const LoginScreen = ({ navigation }) => {
                         color: "#808080",
                         paddingTop: 8,
                         paddingBottom: 10,
+                        width: "60%",
                     }}
                 >
                     Hi ! Welcome back, you have been missed
