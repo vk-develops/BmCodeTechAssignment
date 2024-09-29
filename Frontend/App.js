@@ -29,7 +29,7 @@ export default function App() {
             <NavigationContainer>
                 <Stack.Navigator>
                     <Stack.Screen
-                        name="Home"
+                        name="Events"
                         component={HomeScreen}
                     />
                     <Stack.Screen
