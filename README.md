@@ -12,8 +12,7 @@ This is a simple mobile application built using **React Native** that allows use
 
 ## Table of Contents
 
--   [Setup Instructions](#setup-instructions)
--   [How to Run the Project](#how-to-run-the-project)
+-   [Setup Instructions and How to run](#setup-instructions)
 
 ---
 
@@ -31,9 +30,24 @@ Ensure you have the following tools installed:
 
 1. **Clone the Repository**:
    First, clone the project repository to your local machine using Git
-   `bash
-git clone https://github.com/vk-develops/EventBooking.git
-`
+    ```bash
+    git clone https://github.com/vk-develops/EventBooking.git
+    ```
 2. **Navigate to the Project Directory**:
-   '''cd event-booking-app
-   '''
+
+    ```bash
+    cd Frontend
+
+    ```
+
+3. **Install Dependencies**:
+
+    ```bash
+    npm install
+    ```
+
+4. **Start the Expo Development Server**:
+
+```bash
+npx expo start
+```
