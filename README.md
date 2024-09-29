@@ -48,6 +48,6 @@ Ensure you have the following tools installed:
 
 4. **Start the Expo Development Server**:
 
-```bash
-npx expo start
-```
+    ```bash
+    npx expo start
+    ```
