@@ -4,7 +4,12 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
 import Toast from "react-native-toast-message";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Appstack from "./src/Navigation/Appstack";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeScreen from "./src/Screens/HomeScreen";
+import EventDetailScreen from "./src/Screens/EventDetailScreen";
+import BookingScreen from "./src/Screens/BookingScreen";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
     const [fontsLoaded] = useFonts({
@@ -22,7 +27,20 @@ export default function App() {
         <SafeAreaView style={styles.container}>
             <StatusBar style="auto" />
             <NavigationContainer>
-                <Appstack />
+                <Stack.Navigator>
+                    <Stack.Screen
+                        name="Home"
+                        component={HomeScreen}
+                    />
+                    <Stack.Screen
+                        name="EventDetail"
+                        component={EventDetailScreen}
+                    />
+                    <Stack.Screen
+                        name="Booking"
+                        component={BookingScreen}
+                    />
+                </Stack.Navigator>
                 <Toast />
             </NavigationContainer>
         </SafeAreaView>
